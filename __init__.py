@@ -20,42 +20,43 @@ def switch_turn(turn):
 # takes the desired position, the current board and the symbol of the current player as arguments
 # returns new board
 def play(position, board, turn):
-    if position == 1:
+    if position == 1 and board[0][0] == ' ':
         board[0][0] = turn
         return board
-    elif position == 2:
+    elif position == 2  and board[0][2] == ' ':
         board[0][2] = turn
         return board
-    elif position == 3:
+    elif position == 3  and board[0][4] == ' ':
         board[0][4] = turn
         return board
-    elif position == 4:
+    elif position == 4 and board[2][0] == ' ':
         board[2][0] = turn
         return board
-    elif position == 5:
+    elif position == 5 and board[2][2] == ' ':
         board[2][2] = turn
         return board
-    elif position == 6:
+    elif position == 6 and board[2][4] == ' ':
         board[2][4] = turn
         return board
-    elif position == 7:
+    elif position == 7 and board[4][0] == ' ':
         board[4][0] = turn
         return board
-    elif position == 8:
+    elif position == 8 and board[4][2] == ' ':
         board[4][2] = turn
         return board
-    elif position == 9:
+    elif position == 9 and board[4][4] == ' ':
         board[4][4] = turn
         return board
     else:
-        return "You shouldn't be seeing this you stupid bitch"
+        print('That spot is already taken! try another')
+        select_play(board, turn)
 
 
 # takes board and the current symbol as arguments
 # returns nothing. recursive.
 def select_play(board, turn):
     if board is None:
-        print('The selections are as follows:')
+        print('\n\nThe selections are as follows:')
         print_board([['1', '|', '2', '|', '3'],
                      ['-', '+', '-', '+', '-'],
                      ['4', '|', '5', '|', '6'],
@@ -84,6 +85,13 @@ def select_play(board, turn):
 # ends game when 9 X's or O's are on the board.
 # TO-DO: check if a player has won and notify them.
 def win_checker(board):
+    #     for i in [0, 1, 2, ]:
+    #         for row in board:
+    #             if (row[i] == ('X' or 'O')):
+    #                 print("hi")
+    #
+
+    # Number of total spaces played
     count = 0
     for row in board:
         # Number of X's and O's in a row
